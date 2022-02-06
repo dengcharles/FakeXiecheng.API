@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj": {}
+    "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj": {}
   },
   "projects": {
-    "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj": {
+    "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
+        "projectUniqueName": "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
         "projectName": "FakeXiecheng.API",
-        "projectPath": "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
+        "projectPath": "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
         "packagesPath": "C:\\Users\\dengc\\.nuget\\packages\\",
-        "outputPath": "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\obj\\",
+        "outputPath": "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dengc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,22 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.13, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
