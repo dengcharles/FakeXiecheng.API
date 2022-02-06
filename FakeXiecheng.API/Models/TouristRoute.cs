@@ -18,5 +18,6 @@ namespace FakeXiecheng.API.Models
         public string Features { get; set; }
         public string Fees { get; set; }
         public string Notes { get; set; }
+        public ICollection<TouristRoutePicture> TouristRoutePictures { get; set; }
     }
 }
