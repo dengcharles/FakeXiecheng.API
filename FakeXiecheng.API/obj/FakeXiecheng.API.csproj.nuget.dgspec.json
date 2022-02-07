@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj": {}
+    "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj": {}
   },
   "projects": {
-    "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj": {
+    "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
+        "projectUniqueName": "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
         "projectName": "FakeXiecheng.API",
-        "projectPath": "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
+        "projectPath": "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
         "packagesPath": "C:\\Users\\dengc\\.nuget\\packages\\",
-        "outputPath": "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\obj\\",
+        "outputPath": "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dengc\\AppData\\Roaming\\NuGet\\NuGet.Config",

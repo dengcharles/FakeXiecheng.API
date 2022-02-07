@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cwXvAGp26EN+Hu/o+SPn+jF3iZMupxJorqFFdvsYtYhkEAts5rdPDH813moHc6CLs7tkfNC8H0jExKP1IEwh1w==",
+  "dgSpecHash": "VEueqS0Ud/7GredCu+qL64l7jECbTLQpdAglV+SvBjsVOqSKfpTjgV+vqy2hGzU3VT9LKb8wbfFaJ89Bcr73NA==",
   "success": true,
-  "projectFilePath": "C:\\SkillPort\\FakeXieCheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
+  "projectFilePath": "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dengc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dengc\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
