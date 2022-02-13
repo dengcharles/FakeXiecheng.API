@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using System.Text.RegularExpressions;
+using FakeXiecheng.API.ResourceParameters;
 
 namespace FakeXiecheng.API.Controllers
 {
@@ -22,11 +24,15 @@ namespace FakeXiecheng.API.Controllers
             _mapper = mapper;
         }
 
+        //api/touristRoutes?keyword=value
         [HttpGet]
         [HttpHead]
-        public IActionResult GetTouristRoutes()
+        public IActionResult GetTouristRoutes(
+            [FromQuery]TouristRouteResourceParameters pamameters
+            )
         {
-            var touristRoutesFromRepo = _touristRouteRepository.GetTouristRoutes();
+
+            var touristRoutesFromRepo = _touristRouteRepository.GetTouristRoutes(pamameters.Keyword, pamameters.RatingOperator, pamameters.RatingValue);
             if(touristRoutesFromRepo == null || touristRoutesFromRepo.Count() <= 0)
             {
                 return NotFound("No tourist route available");

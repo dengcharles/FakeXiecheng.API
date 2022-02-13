@@ -54,10 +54,10 @@ C:\SkillPort\FakeXieCheng.API\FakeXiecheng.API\bin\Debug\net5.0\Humanizer.dll
 C:\SkillPort\FakeXieCheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Database\touristRoutePicturesMockData.json
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Database\touristRoutesMockData.json
-C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\obj\Debug\net5.0\FakeXiecheng.API.csproj.AssemblyReference.cache
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\AutoMapper.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\obj\Debug\net5.0\FakeXiecheng.API.csproj.AssemblyReference.cache
