@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FakeXiecheng.API
 {
@@ -32,7 +33,25 @@ namespace FakeXiecheng.API
                 setupAction.ReturnHttpNotAcceptable = true;
                 //setupAction.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
 
-            }).AddXmlDataContractSerializerFormatters();
+            }).AddXmlDataContractSerializerFormatters()
+            .ConfigureApiBehaviorOptions(setupAction => {
+                setupAction.InvalidModelStateResponseFactory = context =>
+                {
+                    var problemDetail = new ValidationProblemDetails(context.ModelState)
+                    {
+                        Type = "Any",
+                        Title = "Validation failure",
+                        Status = StatusCodes.Status422UnprocessableEntity,
+                        Detail = "See details",
+                        Instance = context.HttpContext.Request.Path
+                    };
+                    problemDetail.Extensions.Add("traceId", context.HttpContext.TraceIdentifier);
+                    return new UnprocessableEntityObjectResult(problemDetail)
+                    {
+                        ContentTypes = { "application/problem+json" }
+                    };
+                };       
+            });
             services.AddTransient<ITouristRouteRepository, TouristRouteRepository>();
             services.AddDbContext<AppDbContext>(option =>
             {
