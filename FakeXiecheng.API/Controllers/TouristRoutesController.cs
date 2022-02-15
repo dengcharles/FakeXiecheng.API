@@ -10,6 +10,7 @@ using AutoMapper;
 using System.Text.RegularExpressions;
 using FakeXiecheng.API.ResourceParameters;
 using FakeXiecheng.API.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace FakeXiecheng.API.Controllers
 {
@@ -29,12 +30,12 @@ namespace FakeXiecheng.API.Controllers
         [HttpGet]
         [HttpHead]
         public IActionResult GetTouristRoutes(
-            [FromQuery]TouristRouteResourceParameters pamameters
+            [FromQuery] TouristRouteResourceParameters pamameters
             )
         {
 
             var touristRoutesFromRepo = _touristRouteRepository.GetTouristRoutes(pamameters.Keyword, pamameters.RatingOperator, pamameters.RatingValue);
-            if(touristRoutesFromRepo == null || touristRoutesFromRepo.Count() <= 0)
+            if (touristRoutesFromRepo == null || touristRoutesFromRepo.Count() <= 0)
             {
                 return NotFound("No tourist route available");
             }
@@ -50,7 +51,7 @@ namespace FakeXiecheng.API.Controllers
         public IActionResult GetTouristRouteById(Guid touristRouteId)
         {
             var touristRouteFromRepo = _touristRouteRepository.GetTouristRoute(touristRouteId);
-            if(touristRouteFromRepo == null)
+            if (touristRouteFromRepo == null)
             {
                 return NotFound($"Tourist route {touristRouteId} does not exist.");
             }
@@ -92,6 +93,54 @@ namespace FakeXiecheng.API.Controllers
                 new { touristRouteId = touristRouteToReturn.Id },
                 touristRouteToReturn
                 );
+        }
+
+        [HttpPut("{touristRouteId}")]
+        public IActionResult UpdateTouristRoute([FromRoute] Guid touristRouteId, [FromBody] TouristRouteForUpdateDto touristRouteForUpdateDto)
+        {
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
+            {
+                return NotFound("Tourist Route Not Exists.");
+            }
+
+            var touristRouteFomRepo = _touristRouteRepository.GetTouristRoute(touristRouteId);
+
+            //1. Reflect to DTO
+            //2. Update DTO
+            //3. Reflect to Model
+            _mapper.Map(touristRouteForUpdateDto, touristRouteFomRepo);
+
+            _touristRouteRepository.Save();
+
+            return NoContent();
+
+        }
+
+        [HttpPatch("{touristRouteId}")]
+        public IActionResult PartiallyUpdateTouristRoute([FromRoute] Guid touristRouteId,
+            [FromBody] JsonPatchDocument<TouristRouteForUpdateDto> patchDocument
+            )
+        {
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
+            {
+                return NotFound("Tourist Route Not Exists.");
+            }
+
+            var touristRouteFromRepo = _touristRouteRepository.GetTouristRoute(touristRouteId);
+
+            var touristRouteToPatch = _mapper.Map<TouristRouteForUpdateDto>(touristRouteFromRepo);
+
+            patchDocument.ApplyTo(touristRouteToPatch, ModelState);
+
+            if (!TryValidateModel(touristRouteToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+            _mapper.Map(touristRouteToPatch, touristRouteFromRepo);
+
+            _touristRouteRepository.Save();
+
+            return NoContent();
         }
 
     }

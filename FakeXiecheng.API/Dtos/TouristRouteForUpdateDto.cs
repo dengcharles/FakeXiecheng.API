@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace FakeXiecheng.API.Dtos
 {
- 
-    public class TouristRouteForCreationDto : TouristRouteForManipulationDto
+    public class TouristRouteForUpdateDto : TouristRouteForManipulationDto
     {
-      
+        [Required(ErrorMessage = "Must have for update")]
+        [MaxLength(1500)]
+        public override string Description { get; set; }
 
+    
     }
 }

@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Serialization;
 
 namespace FakeXiecheng.API
 {
@@ -29,12 +30,18 @@ namespace FakeXiecheng.API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(setupAction => { 
+            services.AddControllers(setupAction =>
+            {
                 setupAction.ReturnHttpNotAcceptable = true;
                 //setupAction.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
 
-            }).AddXmlDataContractSerializerFormatters()
-            .ConfigureApiBehaviorOptions(setupAction => {
+            })
+            .AddNewtonsoftJson(setupAction => {
+                setupAction.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            })
+            .AddXmlDataContractSerializerFormatters()
+            .ConfigureApiBehaviorOptions(setupAction =>
+            {
                 setupAction.InvalidModelStateResponseFactory = context =>
                 {
                     var problemDetail = new ValidationProblemDetails(context.ModelState)
@@ -50,7 +57,7 @@ namespace FakeXiecheng.API
                     {
                         ContentTypes = { "application/problem+json" }
                     };
-                };       
+                };
             });
             services.AddTransient<ITouristRouteRepository, TouristRouteRepository>();
             services.AddDbContext<AppDbContext>(option =>
