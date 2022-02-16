@@ -60,7 +60,6 @@ C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.Extens
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
-C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\obj\Debug\net5.0\FakeXiecheng.API.csproj.AssemblyReference.cache
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

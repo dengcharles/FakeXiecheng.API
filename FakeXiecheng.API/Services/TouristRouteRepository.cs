@@ -17,12 +17,12 @@ namespace FakeXiecheng.API.Services
             _context = context;
         }
 
-        public TouristRoute GetTouristRoute(Guid touristRouteId)
+        public async Task<TouristRoute> GetTouristRouteAsync(Guid touristRouteId)
         {
-            return _context.TouristRoutes.Include(t => t.TouristRoutePictures).FirstOrDefault(n => n.Id == touristRouteId);
+            return await _context.TouristRoutes.Include(t => t.TouristRoutePictures).FirstOrDefaultAsync(n => n.Id == touristRouteId);
         }
 
-        public IEnumerable<TouristRoute> GetTouristRoutes(string keyword, string ratingOperator, int? ratingValue)
+        public async Task<IEnumerable<TouristRoute>> GetTouristRoutesAsync(string keyword, string ratingOperator, int? ratingValue)
         {
             IQueryable<TouristRoute> result = _context.TouristRoutes.Include(t => t.TouristRoutePictures);
             if (!string.IsNullOrEmpty(keyword))
@@ -40,41 +40,41 @@ namespace FakeXiecheng.API.Services
                 };
             }
             // include VS join
-            return result.ToList();
+            return await result.ToListAsync();
         }
 
-        public bool TouristRouteExists(Guid touristRouteId)
+        public async Task<bool> TouristRouteExistsAsync(Guid touristRouteId)
         {
-            return _context.TouristRoutes.Any(t => t.Id == touristRouteId);
+            return await _context.TouristRoutes.AnyAsync(t => t.Id == touristRouteId);
         }
 
-        public IEnumerable<TouristRoutePicture> GetPicturesByTouristRouteId(Guid touristRouteId)
+        public async Task<IEnumerable<TouristRoutePicture>> GetPicturesByTouristRouteIdAsync(Guid touristRouteId)
         {
-            return _context.TouristRoutePictures.Where(p => p.TouristRouteId == touristRouteId).ToList();
+            return await _context.TouristRoutePictures.Where(p => p.TouristRouteId == touristRouteId).ToListAsync();
         }
 
-        public TouristRoutePicture GetPicture(int pictureId)
+        public async Task<TouristRoutePicture> GetPictureAsync(int pictureId)
         {
-            return _context.TouristRoutePictures.Where(p => p.Id == pictureId).FirstOrDefault();
+            return await _context.TouristRoutePictures.Where(p => p.Id == pictureId).FirstOrDefaultAsync();
         }
 
-        public IEnumerable<TouristRoute> GetTouristRoutesByIDList(IEnumerable<Guid> ids)
+        public async Task<IEnumerable<TouristRoute>> GetTouristRoutesByIDListAsync(IEnumerable<Guid> ids)
         {
-            return _context.TouristRoutes.Where(t => ids.Contains(t.Id)).ToList();
+            return await _context.TouristRoutes.Where(t => ids.Contains(t.Id)).ToListAsync();
         }
 
-        public void AddTouristRoute(TouristRoute touristRoute)
+        public async void AddTouristRouteAsync(TouristRoute touristRoute)
         {
             if(touristRoute == null)
             {
                 throw new ArgumentNullException(nameof(touristRoute));
             }
 
-            _context.TouristRoutes.Add(touristRoute);
+           await _context.TouristRoutes.AddAsync(touristRoute);
             
         }
 
-        public void AddTouristRoutePicture(Guid touristRouteId, TouristRoutePicture touristRoutePicture)
+        public async void AddTouristRoutePictureAsync(Guid touristRouteId, TouristRoutePicture touristRoutePicture)
         {
             if(touristRouteId == Guid.Empty)
             {
@@ -85,7 +85,7 @@ namespace FakeXiecheng.API.Services
                 throw new ArgumentNullException(nameof(touristRoutePicture));
             }
             touristRoutePicture.TouristRouteId = touristRouteId;
-            _context.TouristRoutePictures.Add(touristRoutePicture);
+            await _context.TouristRoutePictures.AddAsync(touristRoutePicture);
         }
 
         public void DeleteTouristRoute(TouristRoute touristRoute)
@@ -102,9 +102,9 @@ namespace FakeXiecheng.API.Services
             _context.TouristRoutePictures.Remove(picture);
         }
 
-        public bool Save()
+        public async Task<bool> SaveAsync()
         {
-            return (_context.SaveChanges() >= 0);
+            return (await _context.SaveChangesAsync() >= 0);
         }
     }
 }
