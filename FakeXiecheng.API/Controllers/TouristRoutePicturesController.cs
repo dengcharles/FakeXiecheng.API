@@ -84,6 +84,24 @@ namespace FakeXiecheng.API.Controllers
                 pictureToReturn
                 );
         }
+
+        [HttpDelete("{pictureId}")]
+        public IActionResult DeletePicture([FromRoute]Guid touristRouteId, [FromRoute]int pictureId)
+        {
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
+            {
+                return NotFound("Tourist route not exists");
+            }
+
+            var picture = _touristRouteRepository.GetPicture(pictureId);
+
+            _touristRouteRepository.DeleteTouristRoutePicture(picture);
+            _touristRouteRepository.Save();
+
+            return NoContent();
+        }
+
+
     }
 
 }

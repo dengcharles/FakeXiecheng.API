@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using FakeXiecheng.API.ResourceParameters;
 using FakeXiecheng.API.Models;
 using Microsoft.AspNetCore.JsonPatch;
+using FakeXiecheng.API.Helper;
 
 namespace FakeXiecheng.API.Controllers
 {
@@ -141,6 +142,40 @@ namespace FakeXiecheng.API.Controllers
             _touristRouteRepository.Save();
 
             return NoContent();
+        }
+
+        [HttpDelete("{touristRouteId}")]
+        public IActionResult DeleteTouristRoute([FromRoute]Guid touristRouteId)
+        {
+            if (!_touristRouteRepository.TouristRouteExists(touristRouteId))
+            {
+                return NotFound("Tourist Route Not Exists.");
+            }
+
+
+            var touristRoute = _touristRouteRepository.GetTouristRoute(touristRouteId);
+
+            _touristRouteRepository.DeleteTouristRoute(touristRoute);
+
+            _touristRouteRepository.Save();
+
+            return NoContent();
+        }
+
+        [HttpDelete("({touristIDs})")]
+        public IActionResult DeleteByIDs([ModelBinder(BinderType = typeof(ArrayModelBinder))][FromRoute]IEnumerable<Guid> touristIDs)
+        {
+            if(touristIDs == null)
+            {
+                return BadRequest();
+            }
+
+            var touristRouteFromRepo = _touristRouteRepository.GetTouristRoutesByIDList(touristIDs);
+            _touristRouteRepository.DeleteTouristRoutes(touristRouteFromRepo);
+            _touristRouteRepository.Save();
+
+            return NoContent();
+
         }
 
     }
