@@ -2,6 +2,7 @@
 using FakeXiecheng.API.Dtos;
 using FakeXiecheng.API.Models;
 using FakeXiecheng.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -63,6 +64,8 @@ namespace FakeXiecheng.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateTouristRoutePicture([FromRoute] Guid touristRouteId, [FromBody] TouristRoutePictureForCreationDto touristRoutePictureForCreationDto)
         {
             if (!(await _touristRouteRepository.TouristRouteExistsAsync(touristRouteId)))
@@ -86,6 +89,8 @@ namespace FakeXiecheng.API.Controllers
         }
 
         [HttpDelete("{pictureId}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePicture([FromRoute]Guid touristRouteId, [FromRoute]int pictureId)
         {
             if (!(await _touristRouteRepository.TouristRouteExistsAsync(touristRouteId)))
