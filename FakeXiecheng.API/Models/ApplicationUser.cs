@@ -9,7 +9,7 @@ namespace FakeXiecheng.API.Models
     public class ApplicationUser : IdentityUser
     {
         public string Address { get; set; }
-        // ShoppingCart
+        public ShoppingCart ShoppingCart { get; set; }
         // Orders
 
         public virtual ICollection<IdentityUserRole<string>> UserRoles { get; set; }

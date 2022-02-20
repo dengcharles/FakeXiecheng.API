@@ -14,12 +14,18 @@ namespace FakeXiecheng.API.Services
         Task<IEnumerable<TouristRoutePicture>> GetPicturesByTouristRouteIdAsync(Guid touristRouteId);
         Task<TouristRoutePicture> GetPictureAsync(int pictureId);
         Task<IEnumerable<TouristRoute>> GetTouristRoutesByIDListAsync(IEnumerable<Guid> ids);
+        Task<ShoppingCart> GetShoppingCartByUserId(string userId);
         void AddTouristRouteAsync(TouristRoute touristRoute);
         void AddTouristRoutePictureAsync(Guid touristRouteId, TouristRoutePicture touristRoutePicture);
         void DeleteTouristRoute(TouristRoute touristRoute);
         void DeleteTouristRoutes(IEnumerable<TouristRoute> touristRoutes);
         void DeleteTouristRoutePicture(TouristRoutePicture picture);
-
+        Task CreateShoppingCart(ShoppingCart shoppingCart);
+        Task AddShoppingCartItem(LineItem lineItem);
+        Task<LineItem> GetShoppingCartItemByItemId(int lineItemId);
+        void DeleteShoppingCartItem(LineItem lineItem);
+        Task<IEnumerable<LineItem>> GetShoppingCartsByIdListAsync(IEnumerable<int> ids);
+        void DeleteShoppingCartItems(IEnumerable<LineItem> lineItems);
         Task<bool> SaveAsync();
 
 
