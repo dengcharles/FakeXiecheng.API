@@ -73,6 +73,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.13, )"
+            },
+            "stateless": {
+              "target": "Package",
+              "version": "[5.11.0, )"
             }
           },
           "imports": [

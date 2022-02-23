@@ -70,3 +70,4 @@ C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.AspNet
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\obj\Debug\net5.0\FakeXiecheng.API.csproj.AssemblyReference.cache
+C:\SkillPort\FakeXiecheng.API\FakeXiecheng.API\bin\Debug\net5.0\stateless.dll
