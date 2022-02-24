@@ -8,6 +8,8 @@ namespace FakeXiecheng.API.ResourceParameters
 {
     public class TouristRouteResourceParameters
     {
+
+
         public string Keyword { get; set; }
         public string RatingOperator { get; set; }
         public int? RatingValue { get; set; }
@@ -17,7 +19,7 @@ namespace FakeXiecheng.API.ResourceParameters
             get { return _rating; }
             set
             {
-                if(!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value))
                 {
                     Regex regex = new Regex(@"([A-Za-z0-9\-]+)(\d+)");
 
