@@ -1,4 +1,5 @@
 ﻿using FakeXiecheng.API.Database;
+using FakeXiecheng.API.Dtos;
 using FakeXiecheng.API.Helper;
 using FakeXiecheng.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,11 @@ namespace FakeXiecheng.API.Services
     public class TouristRouteRepository : ITouristRouteRepository
     {
         private readonly AppDbContext _context;
-
-        public TouristRouteRepository(AppDbContext context)
+        private readonly IPropertyMappingService _propertyMappingService;
+        public TouristRouteRepository(AppDbContext context, IPropertyMappingService propertyMappingService)
         {
             _context = context;
+            _propertyMappingService = propertyMappingService;
         }
 
         public async Task<TouristRoute> GetTouristRouteAsync(Guid touristRouteId)
@@ -23,7 +25,7 @@ namespace FakeXiecheng.API.Services
             return await _context.TouristRoutes.Include(t => t.TouristRoutePictures).FirstOrDefaultAsync(n => n.Id == touristRouteId);
         }
 
-        public async Task<PaginationList<TouristRoute>> GetTouristRoutesAsync(string keyword, string ratingOperator, int? ratingValue, int pageSize, int pageNumber)
+        public async Task<PaginationList<TouristRoute>> GetTouristRoutesAsync(string keyword, string ratingOperator, int? ratingValue, int pageSize, int pageNumber, string orderBy)
         {
             IQueryable<TouristRoute> result = _context.TouristRoutes.Include(t => t.TouristRoutePictures);
             if (!string.IsNullOrEmpty(keyword))
@@ -41,6 +43,17 @@ namespace FakeXiecheng.API.Services
                 };
             }
 
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                //if(orderBy.ToLowerInvariant() == "originalprice")
+                //{
+                //    result = result.OrderBy(t => t.OriginalPrice);
+                //}
+
+                var touristRouteMappingDictionary = _propertyMappingService.GetPropertyMapping<TouristRouteDto, TouristRoute>();
+
+               result = result.ApplySort(orderBy, touristRouteMappingDictionary);
+            }
 
             // include VS join
             return await PaginationList<TouristRoute>.CreateAsync(pageNumber, pageSize, result);

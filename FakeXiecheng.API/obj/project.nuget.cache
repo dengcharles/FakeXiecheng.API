@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nVFNo3I+rshMiBFg0yEC+Q/LE3O/hxin21IHxEY0ooZa++3gq45p3L7Hyom1Nc6JXLektPfyz/GmZrxj32imhg==",
+  "dgSpecHash": "yO+iywZDtyp4We//ZRORb6d4OkiY8RAjZbDq9zDL+SBXqvn2ljJP006fJlsoxL9zIuq3uwsXdKFu//1ph8EzJA==",
   "success": true,
   "projectFilePath": "C:\\SkillPort\\FakeXiecheng.API\\FakeXiecheng.API\\FakeXiecheng.API.csproj",
   "expectedPackageFiles": [
@@ -70,6 +70,7 @@
     "C:\\Users\\dengc\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\dengc\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\dengc\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
+    "C:\\Users\\dengc\\.nuget\\packages\\system.linq.dynamic.core\\1.2.17\\system.linq.dynamic.core.1.2.17.nupkg.sha512",
     "C:\\Users\\dengc\\.nuget\\packages\\system.net.nameresolution\\4.3.0\\system.net.nameresolution.4.3.0.nupkg.sha512",
     "C:\\Users\\dengc\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\dengc\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
