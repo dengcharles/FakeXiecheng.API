@@ -3,6 +3,7 @@ using FakeXiecheng.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace FakeXiecheng.API.Services
@@ -62,6 +63,32 @@ namespace FakeXiecheng.API.Services
             }
 
             return true;
+        }
+
+        public bool IsPropertiesExists<T>(string fields)
+        {
+            if (string.IsNullOrEmpty(fields))
+            {
+                return true;
+            }
+
+            var fieldsAfterSplit = fields.Split(',');
+
+            foreach(var field in fieldsAfterSplit)
+            {
+                var propertyName = field.Trim();
+
+                var propertyInfo = typeof(T).GetProperty(propertyName, 
+                    BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+
+                if(propertyInfo == null)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+
         }
     }
 }
